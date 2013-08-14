@@ -1,0 +1,5 @@
+- @pixel_height = 6400.00;
+- @unit_size = (@pixel_height / @content[:total].to_f)
+- @content[:counts].sort_by{|k,v| v }.reverse.each do |k,v|
+  - @size = v * @unit_size
+  %div{:style => "float:left; background: #{(k[-1,1] == ';') ? k : k.to_s + ';'} width:#{@size}px; height:100px; border: 1px solid #ccc;"}
