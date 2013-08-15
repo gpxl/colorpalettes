@@ -1,5 +1,8 @@
-%h2 ColorMaps of the Web
+.row
+  .col-md-9.col-md-push-3.center
+    %h1 ColorMaps of the Web
+    %p Enter a uri to a css file to build a map.
 
-= form_tag("/colormaps", method: "post") do
-  = text_field_tag :url, nil, placeholder: 'URI to css file'
-  = submit_tag("Build Map")
+    = form_tag("/colormaps", method: "post") do
+      = text_field_tag :url, nil, placeholder: 'URI to css file'
+      = submit_tag("Build Map")

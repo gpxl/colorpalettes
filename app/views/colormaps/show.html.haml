@@ -1,3 +1,5 @@
+%strong Colormap for #{sanitize params[:url]}
+
 :ruby
   @treemap = {:name => 'flare', :children => []}
   @content[:counts].map{|k,v| @treemap[:children].push({'name' => k[-1,1] == ';' ? k[0, k.size-1] : k, 'size' => v})}
@@ -27,10 +29,6 @@
   }
 
   </style>
-  <form>
-    <label><input type="radio" name="mode" value="size" checked> Size</label>
-    <label><input type="radio" name="mode" value="count"> Count</label>
-  </form>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script>
 
