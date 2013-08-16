@@ -1,4 +1,5 @@
 - @uri = sanitize params[:url]
+- @name = @uri[/[\w]+.[\w]+$/].capitalize
 .container
   .row
     .col-md-12
@@ -11,8 +12,17 @@
               draw_treemap(#{@treemap.to_json},'#stuffit');
             });
           </script>
+        %h2 Colormap for #{@name}
+        %p
+          #{@treemap[:children].size} unique color strings
         #stuffit
-        %strong Colormap for #{@uri}
+
+        %small
+          %strong What's with the dupes?
+          %br
+          Identical strings are most likely due to inconsistencies in semi-colon usage or "!important" tags within the original css file.
+          %br
+          These are displayed as unique in order to show complexity accurately.
       - else
         - @uri_alt = @uri[4] == ':' ? @uri.sub(':','s:') : @uri.sub('s','')
         %strong No results for #{@uri}

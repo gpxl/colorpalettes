@@ -1,8 +1,8 @@
 var draw_treemap = function(root, target) {
 
-  var margin = {top: 40, bottom: 10},
+  var margin = {bottom: 10},
       width = 960,
-      height = 500 - margin.top - margin.bottom;
+      height = 500 - margin.bottom;
 
   var treemap = d3.layout.treemap()
       .size([width, height])
@@ -12,8 +12,7 @@ var draw_treemap = function(root, target) {
   var div = d3.select(target).append("div")
       .style("position", "relative")
       .style("width", (width) + "px")
-      .style("height", (height + margin.top + margin.bottom) + "px")
-      .style("top", margin.top + "px")
+      .style("height", (height + margin.bottom) + "px")
       .style("margin-left", "auto")
       .style("margin-right", "auto");
 
