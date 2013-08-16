@@ -5,7 +5,8 @@ class ColormapsController < ApplicationController
   end
 
   def create
-    @css = DryCss::CSS.new(params[:url])
+    @site = DryCss::Site.new(params[:url])
+    @css = DryCss::CSS.new(*@site.uris)
     @content = @css.colors
     @treemap = {:name => 'flare', :children => []}
     @content[:counts].map{|k,v| @treemap[:children].push({'name' => k[-1,1] == ';' ? k[0, k.size-1] : k, 'size' => v})}

@@ -1,11 +1,20 @@
-:plain
-  <script>
-    $(document).ready(function(){
-      draw_treemap(#{@treemap.to_json},'#stuffit');
-    });
-  </script>
+- @uri = sanitize params[:url]
 .container
   .row
     .col-md-12
-      #stuffit
-      %strong Colormap for #{sanitize params[:url]}
+      - if @treemap[:children].count > 0
+        :plain
+          <script>
+            $(document).ready(function(){
+              console.log(#{@treemap[:children].count})
+
+              draw_treemap(#{@treemap.to_json},'#stuffit');
+            });
+          </script>
+        #stuffit
+        %strong Colormap for #{@uri}
+      - else
+        - @uri_alt = @uri[4] == ':' ? @uri.sub(':','s:') : @uri.sub('s','')
+        %strong No results for #{@uri}
+        %p
+          Try it again with #{@uri_alt}

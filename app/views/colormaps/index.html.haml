@@ -2,10 +2,10 @@
   .row
     .col-md-9.col-md-push-3.center
       %h1 ColorMaps of the Web
-      %p Enter a uri to a css file to build a map.
+      %p Explore css colors and complexity
 
       = form_tag("/colormaps", method: "post") do
-        = text_field_tag :url, nil, placeholder: 'URI to css file'
+        = text_field_tag :url, nil, placeholder: 'http://www.github.com'
         = submit_tag("Build Map")
 
   #example{:style => 'margin-top: 30px;'}
@@ -20,7 +20,7 @@
       $.ajax({
         type: 'post',
         url: '/colormaps',
-        data: {url: 'https://github.global.ssl.fastly.net/assets/github-889a72ca42388054915c6d822b2ce3caefa3919f.css'},
+        data: {url: 'https://github.com'},
         success: function (response) {
           $('#example').html(response);
         }

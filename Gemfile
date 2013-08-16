@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 
 gem 'dry_css'
+gem 'nokogiri'
 
 group :doc do
   gem 'sdoc', require: false
