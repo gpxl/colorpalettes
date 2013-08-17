@@ -2,19 +2,28 @@ class ColormapsController < ApplicationController
   respond_to :html, :json
 
   def index
+    @map_for_form = Colormap.new
+    @map = Colormap.first
   end
 
   def create
-    @site = DryCss::Site.new(params[:url])
-    @css = DryCss::CSS.new(*@site.uris)
-    @content = @css.colors
-    @treemap = {:name => 'flare', :children => []}
-    @content[:counts].map{|k,v| @treemap[:children].push({'name' => k[-1,1] == ';' ? k[0, k.size-1] : k, 'size' => v})}
-    render 'colormaps/show'
+    @map = Colormap.find_by_uri(params[:colormap][:uri]) || Colormap.create(post_params)
+    if !@map.changed? ||  @map.save
+      render 'colormaps/show'
+    else
+      redirect_to :index
+    end
   end
 
   def show
-    @css = DryCss::CSS.new(params[:url])
-    respond_with @css.colors
+    @map = Colormap.find(params[:id])
+    respond_with @map
   end
+
+  private
+
+  def post_params
+    params.require(:colormap).permit(:uri)
+  end
+
 end

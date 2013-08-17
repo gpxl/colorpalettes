@@ -1,0 +1,30 @@
+- if map.treemap[:children].count > 0
+  :plain
+    <script>
+      $(document).ready(function(){
+        draw_treemap(#{map.treemap.to_json},'#stuffit');
+      });
+    </script>
+  .container
+    .row
+      .col-md-9.col-md-push-3.center
+        %h2 Colormap for #{map.name}
+        %p
+          #{map.color_count} unique color strings in #{map.reference_count} css tags.
+    .row
+      .col-md-12
+        #stuffit
+    .row
+      .col-md-10.col-md-push-1.center
+        %small
+          %strong What's with the dupes?
+          %br
+          Identical strings are most likely due to inconsistencies in semi-colon usage or "!important" tags within the original css file.
+          %br
+          These are displayed as unique in order to show complexity accurately.
+- else
+  - @uri_alt = map.uri[4] == ':' ? map.uri.sub(':','s:') : map.uri.sub('s','')
+  %strong No results for #{map.uri}
+  %p
+    Try it again with #{@uri_alt}
+

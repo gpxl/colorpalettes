@@ -4,26 +4,9 @@
       %h1 ColorMaps of the Web
       %p Explore css colors and complexity
 
-      = form_tag("/colormaps", method: "post") do
-        = text_field_tag :url, nil, placeholder: 'http://www.github.com'
-        = submit_tag("Build Map")
+      = form_for @map_for_form do |f|
+        = f.text_field :uri, placeholder: 'http://www.github.com'
+        = f.submit "Build Map"
 
   #example{:style => 'margin-top: 30px;'}
-    .container
-      .row
-        .col-md-9.col-md-push-3.center
-          %h2 Building Github ColorMap...
-          = image_tag('loading.gif')
-:plain
-  <script>
-    $(document).ready(function(){
-      $.ajax({
-        type: 'post',
-        url: '/colormaps',
-        data: {url: 'https://github.com'},
-        success: function (response) {
-          $('#example').html(response);
-        }
-      });
-    });
-  </script>
+    = render :partial => 'colormap', locals: {map: @map}
