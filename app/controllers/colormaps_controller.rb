@@ -3,7 +3,7 @@ class ColormapsController < ApplicationController
 
   def index
     @new_map = Colormap.new
-    @maps = Colormap.find(:all, :order => "id desc", :limit => 5).reverse
+    @maps = Colormap.find(:all, :order => "id desc", :limit => 5)
   end
 
   def create
