@@ -3,9 +3,10 @@ class Colormap < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   validates_presence_of :uri
+  validates_numericality_of :color_count, :greater_than => 0
   serialize :treemap
 
-  before_save :get_attrs
+  before_validation :get_attrs
 
   def name
     self.uri[/([\w]+).[\w]+$/,1].capitalize

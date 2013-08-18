@@ -11,7 +11,9 @@ class ColormapsController < ApplicationController
     if !@map.changed? ||  @map.save
       redirect_to @map
     else
-      redirect_to :index
+      @uri_alt = @map.uri[4] == ':' ? @map.uri.sub(':','s:') : @map.uri.sub('s','')
+      flash[:notice] = "CSS could not be parsed at #{@map.uri}. Try again with #{@uri_alt}"
+      redirect_to :root
     end
   end
 

@@ -22,4 +22,11 @@
           .form-group
             = f.text_field :uri, class: 'form-control', placeholder: 'http://www.github.com'
           = f.submit "Search", class: 'btn btn-default'
+
+    - if flash[:notice]
+      .container
+        .row
+          .col-md-12
+            .alert
+              = flash[:notice]
     = yield
