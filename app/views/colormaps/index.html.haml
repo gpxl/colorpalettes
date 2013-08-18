@@ -1,12 +1,7 @@
 .container
   .row
-    .col-md-9.col-md-push-3.center
-      %h1 ColorMaps of the Web
-      %p Explore css colors and complexity
-
-      = form_for @map_for_form do |f|
-        = f.text_field :uri, placeholder: 'http://www.github.com'
-        = f.submit "Build Map"
-
-  #example{:style => 'margin-top: 30px;'}
-    = render :partial => 'colormap', locals: {map: @map}
+    .col-md-12
+      %h4 Recently Mapped
+      %hr
+  - @maps.each do |map|
+    = render :partial => 'colormap_list', locals: {map: map}

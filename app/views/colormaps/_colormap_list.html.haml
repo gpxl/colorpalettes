@@ -1,0 +1,25 @@
+- if map.treemap[:children].count > 0
+  - id = map.name + map.created_at.to_i.to_s
+  :plain
+    <script>
+      $(document).ready(function(){
+        draw_treemap(#{map.treemap.to_json},"##{id}", 960, 35, false);
+      });
+    </script>
+  .container
+    .row
+      .col-md-12
+        %h4
+          #{link_to map.name, map}
+          %span #{map.color_count} unique color strings in #{map.reference_count} css tags.
+    .row
+      .col-md-12
+        = link_to map do
+          %div{id: "#{id}"}
+      %hr
+- else
+  - @uri_alt = map.uri[4] == ':' ? map.uri.sub(':','s:') : map.uri.sub('s','')
+  %strong No results for #{map.uri}
+  %p
+    Try it again with #{@uri_alt}
+

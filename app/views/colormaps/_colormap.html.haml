@@ -1,8 +1,9 @@
 - if map.treemap[:children].count > 0
+  - id = map.name + map.created_at.to_i.to_s
   :plain
     <script>
       $(document).ready(function(){
-        draw_treemap(#{map.treemap.to_json},'#stuffit');
+        draw_treemap(#{map.treemap.to_json},"##{id}");
       });
     </script>
   .container
@@ -13,7 +14,7 @@
           #{map.color_count} unique color strings in #{map.reference_count} css tags.
     .row
       .col-md-12
-        #stuffit
+        %div{id: "#{id}"}
     .row
       .col-md-10.col-md-push-1.center
         %small

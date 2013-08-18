@@ -1,8 +1,8 @@
-var draw_treemap = function(root, target) {
+var draw_treemap = function(root, target, width, height, show_detail) {
 
-  var margin = {bottom: 10},
-      width = 960,
-      height = 500 - margin.bottom;
+  var width = typeof width !== 'undefined' ? width : 960,
+      height = typeof height !== 'undefined' ? height : 500,
+      show_detail = typeof show_detail !== 'undefined' ? show_detail : true;
 
   var treemap = d3.layout.treemap()
       .size([width, height])
@@ -12,8 +12,8 @@ var draw_treemap = function(root, target) {
 
   var div = d3.select(target).append("div")
       .style("position", "relative")
-      .style("width", (width) + "px")
-      .style("height", (height + margin.bottom) + "px")
+      .style("width", width + "px")
+      .style("height", height + "px")
       .style("margin-left", "auto")
       .style("margin-right", "auto");
 
@@ -23,7 +23,7 @@ var draw_treemap = function(root, target) {
       .attr("class", "node")
       .call(position)
       .style("background", function(d) { return d.name; })
-      .text(function(d) { return d.name; });
+      .text(function(d) { if(show_detail == true ) {return d.name}; });
 }
 
 function position() {
