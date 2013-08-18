@@ -9,14 +9,14 @@ class ColormapsController < ApplicationController
   def create
     @map = Colormap.find_by_uri(params[:colormap][:uri]) || Colormap.create(post_params)
     if !@map.changed? ||  @map.save
-      render 'colormaps/show'
+      redirect_to @map
     else
       redirect_to :index
     end
   end
 
   def show
-    @map = Colormap.find(params[:id])
+    @map = Colormap.friendly.find(params[:id])
     respond_with @map
   end
 

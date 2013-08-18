@@ -1,11 +1,14 @@
 class Colormap < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   validates_presence_of :uri
   serialize :treemap
 
   before_save :get_attrs
 
   def name
-    self.uri[/[\w]+.[\w]+$/].capitalize
+    self.uri[/([\w]+).[\w]+$/,1].capitalize
   end
 
   private

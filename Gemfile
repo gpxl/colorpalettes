@@ -13,6 +13,7 @@ gem 'haml'
 
 gem 'dry_css'
 gem 'nokogiri'
+gem 'friendly_id', '5.0.0.beta1'
 
 group :doc do
   gem 'sdoc', require: false
