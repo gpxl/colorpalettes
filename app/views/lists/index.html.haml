@@ -1,11 +1,8 @@
 .container
   .row
-    .span-md-12
+    .col-md-12
       %h1 Colormaps Galore!
-  .row
-    - @maps.each_slice(@maps.size/2) do |slice|
-      .span-md-4
-        %ul
-        - slice.each do |map|
+      %ul
+        - @maps.each do |map|
           %li= link_to map.name, map
 
