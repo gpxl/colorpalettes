@@ -18,10 +18,12 @@
       .container
         .navbar-header
           =link_to 'Colormaps', '/', class: 'navbar-brand'
-        = form_for @new_map, html: {class: 'navbar-form navbar-left'} do |f|
-          .form-group
-            = f.text_field :uri, class: 'form-control', placeholder: 'http://www.github.com'
-          = f.submit "Search", class: 'btn btn-default'
+          = form_for new_map, html: {class: 'navbar-form navbar-left'} do |f|
+            .form-group
+              = f.text_field :uri, class: 'form-control', placeholder: 'http://www.github.com'
+            = f.submit "Search", class: 'btn btn-default'
+          %ul.nav.navbar-nav
+            %li= link_to 'List All', lists_path
 
     - if flash[:notice]
       .container

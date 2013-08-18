@@ -2,7 +2,6 @@ class ColormapsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @new_map = Colormap.new
     @maps = Colormap.find(:all, :order => "id desc", :limit => 5)
   end
 
@@ -18,9 +17,8 @@ class ColormapsController < ApplicationController
   end
 
   def show
-    @new_map = Colormap.new
     @map = Colormap.friendly.find(params[:id])
-    respond_with @map, @new_map
+    respond_with @map
   end
 
   private
