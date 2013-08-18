@@ -7,6 +7,7 @@ var draw_treemap = function(root, target) {
   var treemap = d3.layout.treemap()
       .size([width, height])
       .sticky(true)
+      .sort(function(a,b){ return a.size - b.size; })
       .value(function(d) { return d.size; });
 
   var div = d3.select(target).append("div")
