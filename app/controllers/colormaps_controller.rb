@@ -2,7 +2,7 @@ class ColormapsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @maps = Colormap.find(:all, :order => "id desc", :limit => 5)
+    @maps = Colormap.find(:all, :order => "id desc", :limit => 20)
   end
 
   def create

@@ -32,3 +32,16 @@
             .alert
               = flash[:notice]
     = yield
+
+    %nav.navbar.navbar-default.footer
+      .container
+        .row
+          .col-md-3
+            Made by
+            =link_to 'Gerlando Piro', 'http://www.gerlandopiro.com'
+            (#{link_to '@gpxl', 'http://www.twitter.com/gpxl'})
+          .col-md-4
+            %ul.nav.navbar-nav
+              :plain
+                <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=gpxl&amp;repo=colormaps&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe></li>
+                <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=gpxl&amp;repo=colormaps&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe></li>

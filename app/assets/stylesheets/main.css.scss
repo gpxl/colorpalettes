@@ -1,3 +1,6 @@
+iframe {
+  border: 0;
+}
 .node {
   border: solid 1px white;
   font: 10px sans-serif;
@@ -5,4 +8,11 @@
   overflow: hidden;
   position: absolute;
   text-indent: 2px;
+}
+.footer {
+  margin-top: 5em;
+  margin-bottom: 0;
+  .container {
+    padding-top: 1em;
+  }
 }
