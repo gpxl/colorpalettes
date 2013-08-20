@@ -15,10 +15,18 @@ gem 'dry_css'
 gem 'nokogiri'
 gem 'friendly_id', '5.0.0.beta1'
 
+gem 'capistrano'
+gem 'rvm-capistrano'
+
 group :doc do
   gem 'sdoc', require: false
 end
 
+# need to migrate to PG in prod :(
 group :production do
-  gem 'rails_12factor'
+  gem 'mysql2'
+end
+
+group :assets do
+  gem 'therubyracer'
 end
