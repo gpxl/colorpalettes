@@ -8,15 +8,18 @@
     </script>
   .container
     .row
-      .col-md-9.col-md-push-3.center
-        %h2 Colormap for #{map.name}
-        %p
-          #{map.color_count} unique color strings in #{map.reference_count} css tags.
-    .row
       .col-md-12
+        %h2
+          Colormap for #{map.name}
+          %br
+          %small #{map.color_count} unique color strings in #{map.reference_count} css tags.
+        %p
+          %small uri: #{link_to map.uri, map.uri} updated #{time_ago_in_words(map.updated_at)} ago
+    .row
+      .col-md-12.map
         %div{id: "#{id}"}
     .row
-      .col-md-10.col-md-push-1.center
+      .col-md-12
         %small
           %strong What's with the dupes?
           %br

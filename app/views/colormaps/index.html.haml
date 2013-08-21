@@ -5,5 +5,4 @@
       %hr
   - @maps.each do |map|
     = render :partial => 'colormap_list', locals: {map: map}
-  %hr
-    = link_to 'List all maps', lists_path
+  = link_to 'List all maps', lists_path

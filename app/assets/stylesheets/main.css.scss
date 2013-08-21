@@ -8,6 +8,12 @@ iframe {
   overflow: hidden;
   position: absolute;
   text-indent: 2px;
+  box-shadow: 0 0 6px #999;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+.map {
+  margin: 5em 0;
 }
 .footer {
   margin-top: 5em;
