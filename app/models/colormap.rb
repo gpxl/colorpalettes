@@ -9,7 +9,7 @@ class Colormap < ActiveRecord::Base
   before_validation :get_attrs
 
   def name
-    self.uri[/([\w]+).[\w]+$/,1].capitalize
+    self.uri[/([\w]+).[\w\/]+$/,1].capitalize
   end
 
   private

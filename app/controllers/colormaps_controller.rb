@@ -6,6 +6,7 @@ class ColormapsController < ApplicationController
   end
 
   def create
+    params[:colormap][:uri].gsub!(/\/$/,'')
     @map = Colormap.find_by_uri(params[:colormap][:uri]) || Colormap.create(post_params)
     if !@map.changed? ||  @map.save
       redirect_to @map
