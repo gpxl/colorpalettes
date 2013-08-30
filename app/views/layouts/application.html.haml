@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Colormaps
+    %title ColorPalettes
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -17,7 +17,7 @@
     %nav.navbar.navbar-default{role: 'navigation'}
       .container
         .navbar-header
-          =link_to 'Colormaps', '/', class: 'navbar-brand'
+          =link_to 'Color Palettes', '/', class: 'navbar-brand'
           = form_for new_map, html: {class: 'navbar-form navbar-left'} do |f|
             .form-group
               = f.text_field :uri, class: 'form-control', placeholder: 'http://www.github.com'

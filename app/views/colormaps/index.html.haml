@@ -1,7 +1,11 @@
+.alert.alert-info
+  .container
+    %h1 Color Palettes of the Web
+    %p taken directly from website stylesheets and clustered by number of occurances.
 .container
   .row
     .col-md-12
-      %h4 Recently Mapped
+      %h4 Recently Added
       %hr
   - @maps.each do |map|
     = render :partial => 'colormap_list', locals: {map: map}

@@ -10,11 +10,11 @@
     .row
       .col-md-12
         %h2
-          Colormap for #{map.name}
+          Color Palette for #{link_to map.uri, map.uri}
           %br
           %small #{map.color_count} unique color strings in #{map.reference_count} css tags.
         %p
-          %small uri: #{link_to map.uri, map.uri} updated #{time_ago_in_words(map.updated_at)} ago
+          %small Updated #{time_ago_in_words(map.updated_at)} ago
     .row
       .col-md-12.map
         %div{id: "#{id}"}
