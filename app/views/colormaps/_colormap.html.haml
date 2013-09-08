@@ -16,7 +16,7 @@
         %p
           %small Updated #{time_ago_in_words(map.updated_at)} ago
         = form_for map do |f|
-          =f.submit
+          =f.submit "Update Now"
     .row
       .col-md-12.map
         %div{id: "#{id}"}
