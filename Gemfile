@@ -23,6 +23,11 @@ group :production do
   gem 'mysql2'
 end
 
+group :test, :development do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
 group :assets do
   gem 'therubyracer'
 end
