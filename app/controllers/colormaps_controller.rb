@@ -6,7 +6,7 @@ class ColormapsController < ApplicationController
   end
 
   def create
-    params[:colormap][:uri].gsub!(/\/$/,'')
+    strip_trailing_forward_slash
     @map = Colormap.find_by_uri(params[:colormap][:uri]) || Colormap.create(post_params)
     if !@map.changed? ||  @map.save
       redirect_to @map
@@ -17,12 +17,26 @@ class ColormapsController < ApplicationController
     end
   end
 
+  def update
+    @map = Colormap.friendly.find(params[:id])
+    if @map.save
+      redirect_to @map
+    else
+      flash[:notice] = "Map could not be updated :("
+      redirect_to @map
+    end
+  end
+
   def show
     @map = Colormap.friendly.find(params[:id])
     respond_with @map
   end
 
   private
+
+  def strip_trailing_forward_slash
+    params[:colormap][:uri].gsub!(/\/$/,'')
+  end
 
   def post_params
     params.require(:colormap).permit(:uri)

@@ -15,6 +15,8 @@
           %small #{map.color_count} unique color strings in #{map.reference_count} css tags.
         %p
           %small Updated #{time_ago_in_words(map.updated_at)} ago
+        = form_for map do |f|
+          =f.submit
     .row
       .col-md-12.map
         %div{id: "#{id}"}
